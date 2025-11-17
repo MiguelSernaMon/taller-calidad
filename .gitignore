@@ -1,0 +1,102 @@
+# IntelliJ / IDE
+.idea/
+*.iml
+*.iws
+/out/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Build / Gradle
+.gradle/
+build/
+!build.gradle
+!gradle.properties
+gradle-app.setting
+gradle-wrapper.jar
+
+# Maven (if ever used)
+target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# Generated sources
+/generated/
+
+# Serenity and test artifacts
+# Ignore built reports, screenshots and test-results produced by Serenity/Gradle
+/target/
+/target/site/
+/target/site/serenity/
+/target/site/serenity/**
+
+# Alternative report directories used in some setups
+/reports/
+/reports/**
+/test-results/
+/test-results/**
+/tmp/
+/tmp/**
+
+# Serenity screenshots and generated files (only inside the report/build folders above)
+/target/**/*.png
+/target/**/*.json
+/target/**/*.html
+/reports/**/*.png
+/reports/**/*.json
+/reports/**/*.html
+/test-results/**/*.png
+/test-results/**/*.json
+/test-results/**/*.html
+
+# Also ignore any screenshots directories commonly created by test frameworks
+**/screenshots/**
+
+# Gradle wrapper
+gradle/wrapper/
+gradlew
+gradlew.bat
+
+# Logs
+*.log
+logs/
+
+# Local env / secrets
+local.properties
+.env
+.secret
+.credentials
+
+# Distribution / packaging
+dist/
+*.zip
+*.tar.gz
+
+# OS generated files
+Thumbs.db
+
+# Node (if any frontend tooling appears)
+node_modules/
+npm-debug.log
+
+# IDE specific (VSCode)
+.vscode/
+
+# Keep the repository clean: allow these configuration files explicitly
+!.gitignore
+
+# Notes:
+# - Imágenes y json generados por Serenity se ignoran únicamente dentro de los directorios de reports/build para evitar eliminar recursos fuente que puedan ser parte del proyecto.
+# - Si desea versionar algún reporte o archivo generado, ajuste las reglas para permitir rutas concretas.
