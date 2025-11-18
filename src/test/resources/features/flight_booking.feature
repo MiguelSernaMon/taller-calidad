@@ -11,7 +11,7 @@ Feature: Flight Booking on BlazeDemo
   @happy_path
   Scenario: Successful flight booking
     Given the user navigates to the BlazeDemo home page
-    When he searches for flights from "Paris" to "Buenos Aires"
+    When he searches for flights from "Boston" to "London"
     And he selects the first available flight
     And he completes the purchase form with the following data
       | name             | Jhon Patiño      |
