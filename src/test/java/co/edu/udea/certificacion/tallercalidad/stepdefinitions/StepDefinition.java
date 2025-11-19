@@ -63,6 +63,8 @@ public class StepDefinition {
         );
     }
 
+    // New step definition for selecting the most expensive flight
+
     @When("he selects the most expensive flight")
     public void selectMostExpensiveFlight() {
         theActorInTheSpotlight().attemptsTo(

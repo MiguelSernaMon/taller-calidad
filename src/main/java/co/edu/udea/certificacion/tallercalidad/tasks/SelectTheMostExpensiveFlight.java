@@ -31,15 +31,12 @@ public class SelectTheMostExpensiveFlight implements Task {
                 WaitUntil.the(ReservePage.FLIGHT_ROWS, isVisible())
         );
 
-        // FIX: Cambiamos List<WebElement> por List<WebElementFacade>
         List<WebElementFacade> flightRows = ReservePage.FLIGHT_ROWS.resolveAllFor(actor);
         double maxPrice = 0.0;
 
-        // Find the most expensive flight by iterating through all rows
-        // La variable 'row' ahora es de tipo WebElementFacade.
+
         for (WebElementFacade row : flightRows) {
             try {
-                // Usamos el método 'find' de Serenity, que devuelve un WebElementFacade.
                 WebElementFacade priceElement = row.find(By.xpath("./td[6]"));
 
                 // Clean the price string (remove '$' and commas)
@@ -50,7 +47,7 @@ public class SelectTheMostExpensiveFlight implements Task {
                     maxPrice = currentPrice;
                 }
             } catch (Exception e) {
-                // Ignore rows that don't contain flight data (like the header)
+                // Ignore
             }
         }
 
