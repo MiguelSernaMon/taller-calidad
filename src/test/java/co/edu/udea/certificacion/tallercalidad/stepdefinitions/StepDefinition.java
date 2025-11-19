@@ -4,8 +4,10 @@ import co.edu.udea.certificacion.tallercalidad.questions.TheConfirmationMessage;
 import co.edu.udea.certificacion.tallercalidad.tasks.FillOutPurchaseForm;
 import co.edu.udea.certificacion.tallercalidad.tasks.SearchForFlights;
 import co.edu.udea.certificacion.tallercalidad.tasks.SelectTheFirstFlight;
+import co.edu.udea.certificacion.tallercalidad.tasks.SelectTheMostExpensiveFlight;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -58,6 +60,20 @@ public class StepDefinition {
     public void verifyMessage(String expectedMessage) {
         theActorInTheSpotlight().should(
                 seeThat("Confirmation Message", TheConfirmationMessage.value(), equalTo(expectedMessage))
+        );
+    }
+
+    @When("he selects the most expensive flight")
+    public void selectMostExpensiveFlight() {
+        theActorInTheSpotlight().attemptsTo(
+                SelectTheMostExpensiveFlight.fromList()
+        );
+    }
+
+    @And("the user searches for flights from {string} to {string}")
+    public void theUserSearchesForFlightsFromTo(String origin, String destination) {
+        theActorInTheSpotlight().attemptsTo(
+                SearchForFlights.from(origin, destination)
         );
     }
 }
