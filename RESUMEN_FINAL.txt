@@ -1,0 +1,168 @@
+================================================================================
+                    📋 RESUMEN FINAL DEL PROYECTO
+================================================================================
+
+✅ TAREAS COMPLETADAS:
+======================
+
+1. ❌ ELIMINADO: Toda la funcionalidad de Flight Booking
+   - flight_booking.feature
+   - FlightBookingRunner.java
+   - SearchForFlights.java
+   - SelectTheFirstFlight.java
+   - SelectTheMostExpensiveFlight.java
+   - FillOutPurchaseForm.java
+   - HomePage.java, ReservePage.java, PurchasePage.java, ConfirmationPage.java
+   - TheConfirmationMessage.java
+   - StepDefinition.java (versión antigua)
+
+2. ✅ CREADO: Nueva funcionalidad de Autenticación de Usuarios
+   - autenticacion_usuarios.feature (con Scenario Outline + Examples)
+   - AutenticacionRunner.java
+   - AutenticacionStepDefinitions.java
+   - LoginPage.java
+   - IngresarCredenciales.java
+   - IntentarIniciarSesion.java
+   - ElMensajeDeError.java
+   - LaPaginaDeLogin.java
+
+3. ✅ CREADO: Nueva funcionalidad de Visualización de Notificaciones
+   - visualizacion_notificaciones.feature (con Scenario Outline + Examples)
+   - NotificacionesRunner.java
+   - NotificacionesStepDefinitions.java
+   - NotificacionesPage.java
+   - NavegarAlModuloNotificaciones.java
+   - RevisarBandejaEntrada.java
+   - ElTituloDeNotificacion.java
+   - LaCategoriaDeNotificacion.java
+   - ElEnlaceDeNotificacion.java
+
+4. ✅ ARREGLADO: Todos los archivos que estaban al revés o corruptos
+   - AutenticacionStepDefinitions.java ✓
+   - NotificacionesPage.java ✓
+   - IngresarCredenciales.java ✓
+   - LaPaginaDeLogin.java ✓
+   - AutenticacionRunner.java ✓
+
+5. ✅ CREADO: Documentación completa
+   - README.md (actualizado)
+   - GUIA_RAPIDA.md
+   - INSTRUCCIONES_INTELLIJ.txt
+   - RESUMEN_FINAL.txt
+   - limpiar_proyecto.sh
+
+================================================================================
+                    🎯 ESTADO ACTUAL DEL PROYECTO
+================================================================================
+
+COMPILACIÓN: ✅ Sin errores
+ARCHIVOS:    ✅ Todos correctos y ordenados
+FEATURES:    ✅ En español con Scenario Outline + Examples
+
+================================================================================
+                    ⚠️  PROBLEMA ACTUAL
+================================================================================
+
+ERROR:
+------
+IntelliJ intenta ejecutar "flight_booking.feature" que ya no existe.
+
+CAUSA:
+------
+Configuraciones de ejecución antiguas guardadas en el caché de IntelliJ.
+
+SOLUCIÓN:
+---------
+Sigue las instrucciones en INSTRUCCIONES_INTELLIJ.txt o ejecuta:
+
+1. En IntelliJ: Run > Edit Configurations...
+   → Elimina TODAS las configuraciones que mencionen "flight"
+
+2. Terminal: ./limpiar_proyecto.sh
+
+3. IntelliJ: File > Invalidate Caches... > Invalidate and Restart
+
+4. Después de reiniciar, ejecuta AutenticacionRunner.java
+
+================================================================================
+                    📝 CONFIGURACIÓN PENDIENTE
+================================================================================
+
+Antes de ejecutar las pruebas, DEBES actualizar:
+
+1. URLs en AutenticacionStepDefinitions.java (línea ~32):
+   Open.url("https://ejemplo.com/login") → Cambia por tu URL real
+
+2. URLs en NotificacionesStepDefinitions.java (línea ~33):
+   Open.url("https://ejemplo.com/dashboard") → Cambia por tu URL real
+
+3. Selectores en LoginPage.java:
+   - EMAIL_INPUT: By.id("email")
+   - PASSWORD_INPUT: By.id("password")
+   - LOGIN_BUTTON: By.id("loginButton")
+   - ERROR_MESSAGE: By.cssSelector(".error-message")
+   - LOGIN_PAGE_INDICATOR: By.cssSelector(".login-container")
+
+4. Selectores en NotificacionesPage.java:
+   - MODULO_NOTIFICACIONES: By.id("notifications")
+   - NOTIFICACION_TITULO: By.cssSelector(".notification-title")
+   - NOTIFICACION_CATEGORIA: By.cssSelector(".notification-category")
+   - NOTIFICACION_ENLACE: By.cssSelector(".notification-link")
+   - BANDEJA_ENTRADA: By.cssSelector(".inbox")
+
+================================================================================
+                    🚀 COMANDOS ÚTILES
+================================================================================
+
+# Limpiar proyecto
+./limpiar_proyecto.sh
+
+# Compilar
+./gradlew clean compileJava compileTestJava
+
+# Ejecutar pruebas de autenticación
+./gradlew clean test --tests AutenticacionRunner
+
+# Ejecutar pruebas de notificaciones
+./gradlew clean test --tests NotificacionesRunner
+
+# Ejecutar todas las pruebas
+./gradlew clean test
+
+# Generar reporte de Serenity
+./gradlew clean test aggregate
+
+# Ver reporte
+open target/site/serenity/index.html
+
+================================================================================
+                    📚 ARCHIVOS DE AYUDA
+================================================================================
+
+README.md
+  → Descripción general del proyecto y comandos básicos
+
+GUIA_RAPIDA.md
+  → Guía completa con estructura del proyecto y configuración
+
+INSTRUCCIONES_INTELLIJ.txt
+  → Solución al error de flight_booking.feature y cómo ejecutar pruebas
+
+RESUMEN_FINAL.txt
+  → Este archivo - resumen de todo lo hecho
+
+limpiar_proyecto.sh
+  → Script para limpiar caché y configuraciones
+
+================================================================================
+                    👥 AUTORES
+================================================================================
+
+- Miguel Serna
+- Camilo Loaiza
+- Alejandro Orrego
+
+================================================================================
+                    Fecha: 29 de Noviembre, 2025
+================================================================================
+

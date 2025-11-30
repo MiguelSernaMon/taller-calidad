@@ -1,0 +1,174 @@
+================================================================================
+     ⚠️  SOLUCIÓN AL ERROR: flight_booking.feature no encontrado
+================================================================================
+
+ERROR QUE ESTÁS VIENDO:
+=======================
+Exception in thread "main" java.lang.IllegalArgumentException:
+path must exist: .../flight_booking.feature
+
+CAUSA:
+======
+IntelliJ tiene guardadas configuraciones de ejecución antiguas que hacen
+referencia a archivos eliminados (flight_booking.feature).
+
+SOLUCIÓN RÁPIDA (EJECUTA ESTOS PASOS):
+=======================================
+
+SOLUCIÓN RÁPIDA (EJECUTA ESTOS PASOS):
+=======================================
+
+PASO 1: Eliminar configuraciones antiguas en IntelliJ
+------------------------------------------------------
+1. En IntelliJ, ve a: Run > Edit Configurations...
+
+2. En el panel izquierdo, busca TODAS las configuraciones que digan:
+   - "Flight Booking"
+   - "FlightBookingRunner"
+   - "Successful flight booking"
+   - Cualquier cosa relacionada con "flight"
+
+3. Selecciona cada una y haz clic en el botón "-" (menos) para eliminarla
+
+4. Haz clic en "Apply" y luego en "OK"
+
+PASO 2: Limpiar caché del proyecto
+-----------------------------------
+Abre la terminal en IntelliJ (Alt+F12 en Windows/Linux, ⌘+F12 en Mac) y ejecuta:
+
+./limpiar_proyecto.sh
+
+O manualmente:
+./gradlew clean
+rm -rf build/ .gradle/
+
+PASO 3: Invalidar caché de IntelliJ
+------------------------------------
+1. Ve a: File > Invalidate Caches...
+
+2. Marca TODAS las opciones:
+   ✓ Clear file system cache and Local History
+   ✓ Clear downloaded shared indexes
+   ✓ Clear workspace caches
+   ✓ Clear VCS Log caches and indexes
+
+3. Haz clic en "Invalidate and Restart"
+
+4. ESPERA a que IntelliJ reinicie e indexe completamente el proyecto
+
+PASO 4: Crear nuevas configuraciones
+-------------------------------------
+Después de que IntelliJ reinicie:
+
+1. Abre el archivo: AutenticacionRunner.java
+
+2. Haz clic derecho en la clase
+
+3. Selecciona "Run 'AutenticacionRunner'"
+
+4. Esto creará una nueva configuración correcta
+
+AHORA SÍ PODRÁS EJECUTAR LAS PRUEBAS SIN ERRORES
+
+================================================================================
+==============================================
+
+OPCIÓN 1: Ejecutar desde el archivo .feature
+---------------------------------------------
+1. Abre el archivo .feature que quieras ejecutar:
+   - autenticacion_usuarios.feature
+   - visualizacion_notificaciones.feature
+
+2. Haz clic derecho sobre el archivo o sobre un escenario específico
+
+3. Selecciona "Run 'Feature: ...' " o "Run 'Scenario: ...'"
+
+OPCIÓN 2: Ejecutar desde el Runner
+-----------------------------------
+1. Abre uno de los runners:
+   - AutenticacionRunner.java
+   - NotificacionesRunner.java
+
+2. Haz clic derecho en la clase
+
+3. Selecciona "Run 'AutenticacionRunner' " o "Run 'NotificacionesRunner' "
+
+OPCIÓN 3: Ejecutar desde Gradle (Línea de Comandos)
+----------------------------------------------------
+Abre la terminal en IntelliJ (Alt+F12) y ejecuta:
+
+# Para pruebas de autenticación:
+./gradlew clean test --tests AutenticacionRunner
+
+# Para pruebas de notificaciones:
+./gradlew clean test --tests NotificacionesRunner
+
+# Para todas las pruebas:
+./gradlew clean test
+
+# Para generar reporte de Serenity:
+./gradlew clean test aggregate
+
+OPCIÓN 4: Ejecutar desde Gradle Tool Window
+--------------------------------------------
+1. Abre la ventana de Gradle (View > Tool Windows > Gradle)
+
+2. Navega a: E2ESPRINT3 > Tasks > verification > test
+
+3. Doble clic en "test"
+
+ELIMINAR CONFIGURACIONES ANTIGUAS MANUALMENTE:
+===============================================
+Si IntelliJ sigue mostrando configuraciones de "flight_booking":
+
+1. Ve a: Run > Edit Configurations...
+
+2. Busca cualquier configuración que mencione "flight" o "FlightBooking"
+
+3. Selecciónala y haz clic en el botón "-" (menos) para eliminarla
+
+4. Haz clic en "OK"
+
+INVALIDAR CACHÉ DE INTELLIJ (SI ES NECESARIO):
+===============================================
+Si sigues teniendo problemas:
+
+1. Ve a: File > Invalidate Caches...
+
+2. Marca las opciones:
+   - "Clear file system cache and Local History"
+   - "Clear downloaded shared indexes"
+   - "Clear workspace caches"
+
+3. Haz clic en "Invalidate and Restart"
+
+ARCHIVOS ACTUALES DEL PROYECTO:
+================================
+
+Features:
+  ✓ autenticacion_usuarios.feature
+  ✓ visualizacion_notificaciones.feature
+
+Runners:
+  ✓ AutenticacionRunner.java
+  ✓ NotificacionesRunner.java
+
+Step Definitions:
+  ✓ AutenticacionStepDefinitions.java
+  ✓ NotificacionesStepDefinitions.java
+
+ARCHIVOS ELIMINADOS (YA NO EXISTEN):
+=====================================
+  ✗ flight_booking.feature (ELIMINADO)
+  ✗ FlightBookingRunner.java (ELIMINADO)
+  ✗ Todas las clases relacionadas con Flight (ELIMINADAS)
+
+================================================================================
+                    ✅ PROYECTO LISTO PARA USAR
+================================================================================
+
+Nota: Recuerda actualizar las URLs y selectores en los archivos antes de
+ejecutar las pruebas. Ver GUIA_RAPIDA.md para más detalles.
+
+================================================================================
+

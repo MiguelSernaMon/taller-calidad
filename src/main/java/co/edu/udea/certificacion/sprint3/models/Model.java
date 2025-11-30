@@ -1,4 +1,4 @@
-package co.edu.udea.certificacion.tallercalidad.models;
+package co.edu.udea.certificacion.sprint3.models;
 
 public class Model {
     private Model(){}

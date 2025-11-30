@@ -1,4 +1,4 @@
-package co.edu.udea.certificacion.tallercalidad.utils;
+package co.edu.udea.certificacion.sprint3.utils;
 
 public class Util {
     private Util(){}

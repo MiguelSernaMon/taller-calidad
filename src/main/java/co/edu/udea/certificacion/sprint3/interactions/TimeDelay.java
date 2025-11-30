@@ -1,4 +1,4 @@
-package co.edu.udea.certificacion.tallercalidad.interactions;
+package co.edu.udea.certificacion.sprint3.interactions;
 
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
