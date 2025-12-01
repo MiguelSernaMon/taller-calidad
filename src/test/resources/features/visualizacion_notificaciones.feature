@@ -1,22 +1,22 @@
-#Authors: Miguel Serna, Camilo Loaiza, Alejandro Orrego
-#language: es
+#Authors: Miguel Serna, Cristina Vergara
+#language: en
 
-Característica: Visualización de Notificaciones
+Feature: Notification Visualization
 
-  Antecedentes:
-    Dado que he iniciado sesión exitosamente
-    Y navego al módulo de notificaciones
+  Background:
+    Given that I have successfully logged in
+    And I navigate to the notifications module
 
-  Esquema del escenario: Visualización correcta según el tipo de notificación
-    Dado que el sistema ha generado un evento de tipo "<tipo>"
-    Cuando reviso mi bandeja de entrada
-    Entonces la notificación debe tener el título "<titulo>"
-    Y debe mostrar el icono o etiqueta visual de "<categoria>"
-    Y debe contener un enlace que dirige a "<destino>"
+  Scenario Outline: Correct visualization according to notification type
+    Given that the system has generated an event of type "<type>"
+    When I check my inbox
+    Then the notification should have the title "<title>"
+    And it should display the icon or visual label of "<category>"
+    And it should contain a link that directs to "<destination>"
 
-    Ejemplos:
-      | tipo            | titulo                | categoria | destino            |
-      | cambio_rol      | Cambio de Rol         | Alerta    | /perfil/roles      |
-      | nuevo_miembro   | Nuevo integrante      | Equipo    | /equipo/miembros   |
-      | agregado_equipo | Bienvenido al equipo  | Info      | /equipo/general    |
+    Examples:
+      | type            | title                 | category | destination        |
+      | cambio_rol      | Cambio de Rol         | Alerta   | /perfil/roles      |
+      | nuevo_miembro   | Nuevo integrante      | Equipo   | /equipo/miembros   |
+      | agregado_equipo | Bienvenido al equipo  | Info     | /equipo/general    |
 
