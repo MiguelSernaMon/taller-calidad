@@ -32,7 +32,7 @@ public class AppConfig {
         
         // Si aún no está configurado, usa el valor por defecto
         if (url == null || url.isEmpty()) {
-            url = "http://localhost:8081";
+            url = "https://innova-team-flow.vercel.app";
         }
         
         return url;
