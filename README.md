@@ -1,8 +1,42 @@
-# Proyecto de Automatización - Sprint 3
+# Proyecto de Automatización E2E - Sprint 3
 
-Este proyecto contiene las pruebas automatizadas para las funcionalidades de Autenticación de Usuarios y Visualización de Notificaciones.
+> 🎯 **Pruebas E2E con Serenity BDD para InnoSistemas**  
+> Integrado con frontend en **modo mock** - Sin necesidad de backend
 
-## Estructura del Proyecto
+## 🚀 Inicio Rápido
+
+### Prerequisitos
+
+1. **Frontend corriendo en modo mock**:
+```bash
+cd ../innova-team-flow
+npm install
+npm run dev
+# Frontend disponible en http://localhost:5173
+```
+
+2. **Java y Gradle instalados**
+
+### Ejecutar Pruebas
+
+```bash
+# Ejecutar todas las pruebas
+./gradlew clean test
+
+# Solo autenticación
+./gradlew clean test --tests "co.edu.udea.certificacion.sprint3.runners.AutenticacionRunner"
+
+# Solo notificaciones
+./gradlew clean test --tests "co.edu.udea.certificacion.sprint3.runners.NotificacionesRunner"
+
+# Generar reporte
+./gradlew aggregate
+# Ver en: target/site/serenity/index.html
+```
+
+---
+
+## 📁 Estructura del Proyecto
 
 El proyecto sigue el patrón Screenplay de Serenity BDD y está organizado de la siguiente manera:
 
