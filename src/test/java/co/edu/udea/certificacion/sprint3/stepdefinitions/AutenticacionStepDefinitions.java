@@ -5,7 +5,6 @@ import co.edu.udea.certificacion.sprint3.interactions.TimeDelay;
 import co.edu.udea.certificacion.sprint3.questions.*;
 import co.edu.udea.certificacion.sprint3.tasks.IngresarCredenciales;
 import co.edu.udea.certificacion.sprint3.tasks.IntentarIniciarSesion;
-// Importaciones necesarias para WaitUntil
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
@@ -20,10 +19,8 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
-// Necesitas importar el Target del Dashboard para esperarlo
 import co.edu.udea.certificacion.sprint3.questions.EstoyEnElDashboard;
 
 public class AutenticacionStepDefinitions {
@@ -43,6 +40,11 @@ public class AutenticacionStepDefinitions {
 
     @Given("that I enter the email {string}")
     public void thatIEnterTheEmail(String email) {
+        theActorInTheSpotlight().remember("correo", email);
+    }
+
+    @When("I enter the email {string}")
+    public void iEnterTheEmail(String email) {
         theActorInTheSpotlight().remember("correo", email);
     }
 
@@ -72,21 +74,20 @@ public class AutenticacionStepDefinitions {
 
     @Then("I should remain on the login page")
     public void iShouldRemainOnTheLoginPage() {
+        theActorInTheSpotlight().attemptsTo(
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
+        );
         theActorInTheSpotlight().should(
                 seeThat("La página de login está visible",
                         LaPaginaDeLogin.estaVisible(), is(true))
         );
     }
 
-    // CORRECCIÓN PRINCIPAL AQUÍ:
     @Then("I should be redirected to the dashboard")
     public void iShouldBeRedirectedToTheDashboard() {
-        // Opcion A: Usar un TimeDelay ANTES (menos elegante pero funciona rápido)
         theActorInTheSpotlight().attemptsTo(
                 TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
-
-        // 2. AHORA SÍ verificamos
         theActorInTheSpotlight().should(
                 seeThat("Está en el dashboard",
                         EstoyEnElDashboard.correctamente(), is(true))
@@ -95,14 +96,43 @@ public class AutenticacionStepDefinitions {
 
     @And("I should see the error message {string}")
     public void iShouldSeeTheErrorMessage(String expectedMessage) {
-        // Esperar un poco a que aparezca el error (animación)
         theActorInTheSpotlight().attemptsTo(
                 TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
-
         theActorInTheSpotlight().should(
                 seeThat("El mensaje de error",
                         ElMensajeDeError.enLaPaginaDeLogin(), equalTo(expectedMessage))
+        );
+    }
+
+    @And("I should see an error message {string}")
+    public void iShouldSeeAnErrorMessage(String expectedMessage) {
+        theActorInTheSpotlight().attemptsTo(
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
+        );
+        theActorInTheSpotlight().should(
+                seeThat("El mensaje de error",
+                        ElMensajeDeError.enLaPaginaDeLogin(), equalTo(expectedMessage))
+        );
+    }
+
+    @And("I should see an error message indicating required fields")
+    public void iShouldSeeAnErrorMessageIndicatingRequiredFields() {
+        theActorInTheSpotlight().attemptsTo(
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
+        );
+        theActorInTheSpotlight().should(
+                seeThat("Mensaje de campos requeridos",
+                        ElMensajeDeError.enLaPaginaDeLogin(), 
+                        anyOf(
+                            containsString("requerido"),
+                            containsString("required"),
+                            containsString("obligatorio"),
+                            containsString("campo"),
+                            containsString("vacío"),
+                            containsString("empty"),
+                            notNullValue()
+                        ))
         );
     }
 
