@@ -1,6 +1,7 @@
 package co.edu.udea.certificacion.sprint3.stepdefinitions;
 
 import co.edu.udea.certificacion.sprint3.config.AppConfig;
+import co.edu.udea.certificacion.sprint3.interactions.TimeDelay;
 import co.edu.udea.certificacion.sprint3.questions.ElEnlaceDeNotificacion;
 import co.edu.udea.certificacion.sprint3.questions.ElTituloDeNotificacion;
 import co.edu.udea.certificacion.sprint3.questions.LaCategoriaDeNotificacion;
@@ -39,16 +40,15 @@ public class NotificacionesStepDefinitions {
     public void iNavigateToTheNotificationsModule() {
         theActorInTheSpotlight().attemptsTo(
                 NavegarAlModuloNotificaciones.deUsuario(),
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(2000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
     }
 
     @Given("that the system has generated an event of type {string}")
     public void thatTheSystemHasGeneratedAnEventOfType(String type) {
-        // Aquí se podría simular la generación del evento
         theActorInTheSpotlight().remember("tipoEvento", type);
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(500)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
     }
 
@@ -56,7 +56,7 @@ public class NotificacionesStepDefinitions {
     public void iCheckMyInbox() {
         theActorInTheSpotlight().attemptsTo(
                 RevisarBandejaEntrada.deNotificaciones(),
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1500)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
     }
 
@@ -67,7 +67,7 @@ public class NotificacionesStepDefinitions {
                         ElTituloDeNotificacion.visible(), equalTo(expectedTitle))
         );
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
     }
 
@@ -78,7 +78,7 @@ public class NotificacionesStepDefinitions {
                         LaCategoriaDeNotificacion.visible(), equalTo(expectedCategory))
         );
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
     }
 
@@ -89,7 +89,7 @@ public class NotificacionesStepDefinitions {
                         ElEnlaceDeNotificacion.direccion(), containsString(expectedDestination))
         );
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
     }
     
@@ -98,24 +98,16 @@ public class NotificacionesStepDefinitions {
     @Then("I should be able to see the notifications section")
     public void iShouldBeAbleToSeeTheNotificationsSection() {
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1500)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
         System.out.println("✓ Usuario puede ver la sección de notificaciones");
-    }
-
-    @Then("I should be able to access notification settings")
-    public void iShouldBeAbleToAccessNotificationSettings() {
-        theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1500)
-        );
-        System.out.println("✓ Administrador puede acceder a configuración de notificaciones");
     }
 
     @Then("I should see notifications relevant to my role {string}")
     public void iShouldSeeNotificationsRelevantToMyRole(String role) {
         theActorInTheSpotlight().attemptsTo(
                 RevisarBandejaEntrada.deNotificaciones(),
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(2000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
         System.out.println("✓ Usuario con rol " + role + " ve notificaciones relevantes");
     }

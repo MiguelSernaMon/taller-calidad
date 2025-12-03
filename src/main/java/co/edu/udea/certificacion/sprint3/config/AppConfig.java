@@ -1,26 +1,8 @@
 package co.edu.udea.certificacion.sprint3.config;
 
-/**
- * Clase de configuración centralizada para URLs y constantes del proyecto.
- * 
- * Permite cambiar fácilmente la URL base de la aplicación sin modificar
- * múltiples archivos de código. La URL se lee desde serenity.conf.
- * 
- * @author Miguel Serna, Camilo Loaiza, Alejandro Orrego
- */
+
 public class AppConfig {
-    
-    /**
-     * URL base de la aplicación web a probar.
-     * Se lee desde la configuración del sistema o serenity.conf (webdriver.base.url)
-     * 
-     * Fallback por defecto: http://localhost:5173
-     * 
-     * Para cambiar el entorno, ejecutar con:
-     * -Dwebdriver.base.url=http://qa.innosistemas.com
-     * 
-     * O modificar serenity.conf directamente
-     */
+
     private static String getConfiguredBaseUrl() {
         // Primero intenta leer desde webdriver.base.url (serenity.conf)
         String url = System.getProperty("webdriver.base.url");
@@ -43,7 +25,7 @@ public class AppConfig {
     /**
      * Timeout por defecto en milisegundos para esperas.
      */
-    public static final int DEFAULT_TIMEOUT = 10000;
+    public static final int DEFAULT_TIMEOUT = 3000;
     
     /**
      * Tiempo de delay para interacciones (en milisegundos).

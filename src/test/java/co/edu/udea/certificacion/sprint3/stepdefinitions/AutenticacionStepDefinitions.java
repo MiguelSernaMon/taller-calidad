@@ -1,6 +1,7 @@
 package co.edu.udea.certificacion.sprint3.stepdefinitions;
 
 import co.edu.udea.certificacion.sprint3.config.AppConfig;
+import co.edu.udea.certificacion.sprint3.interactions.TimeDelay;
 import co.edu.udea.certificacion.sprint3.questions.*;
 import co.edu.udea.certificacion.sprint3.tasks.IngresarCredenciales;
 import co.edu.udea.certificacion.sprint3.tasks.IntentarIniciarSesion;
@@ -36,7 +37,6 @@ public class AutenticacionStepDefinitions {
     @Given("that I am on the login page")
     public void thatIAmOnTheLoginPage() {
         OnStage.theActorCalled("usuario").wasAbleTo(
-                // Asegúrate que AppConfig.getLoginUrl() devuelve la URL correcta (Vercel o localhost)
                 Open.url(AppConfig.getLoginUrl())
         );
     }
@@ -50,7 +50,6 @@ public class AutenticacionStepDefinitions {
     public void thePassword(String password) {
         theActorInTheSpotlight().remember("password", password);
         String correo = theActorInTheSpotlight().recall("correo");
-
         theActorInTheSpotlight().attemptsTo(
                 IngresarCredenciales.con(correo, password)
         );
@@ -82,14 +81,9 @@ public class AutenticacionStepDefinitions {
     // CORRECCIÓN PRINCIPAL AQUÍ:
     @Then("I should be redirected to the dashboard")
     public void iShouldBeRedirectedToTheDashboard() {
-        // 1. Esperar hasta 10 segundos a que el dashboard sea visible.
-        // Esto maneja el delay de 800ms de tu API mock.
-        // Nota: Necesitas exponer el Target en tu clase EstoyEnElDashboard o crear uno aquí.
-        // Asumiendo que puedes acceder a un Target que identifique el dashboard:
-
         // Opcion A: Usar un TimeDelay ANTES (menos elegante pero funciona rápido)
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(2000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
 
         // 2. AHORA SÍ verificamos
@@ -103,7 +97,7 @@ public class AutenticacionStepDefinitions {
     public void iShouldSeeTheErrorMessage(String expectedMessage) {
         // Esperar un poco a que aparezca el error (animación)
         theActorInTheSpotlight().attemptsTo(
-                co.edu.udea.certificacion.sprint3.interactions.TimeDelay.of(1000)
+                TimeDelay.of(AppConfig.DEFAULT_TIMEOUT)
         );
 
         theActorInTheSpotlight().should(
