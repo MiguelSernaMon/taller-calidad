@@ -137,11 +137,7 @@ Asegúrate de actualizar los selectores según tu aplicación.
 - **Selenium WebDriver**: Para interacción con el navegador
 - **JUnit**: Para ejecución de tests
 
-## Autores
 
-- Miguel Serna
-- Camilo Loaiza
-- Alejandro Orrego
 
 ## Notas
 
